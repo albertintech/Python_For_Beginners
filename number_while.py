@@ -17,9 +17,9 @@
 # print(a)
 
 k = 4
-sum = 0
+total = 0
 i = 1
 while i <= k:
-    sum += i
+    total += i
     i += 1
-print(sum)
+print(total)
