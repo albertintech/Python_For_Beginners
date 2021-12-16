@@ -29,3 +29,6 @@ while counter <= user_number:
     print(f"{counter} !")
     counter += 1
 print('Completed, have a nice day!')
+
+# Stage 5: Mulitple Choice
+# See chatty_bot.py
