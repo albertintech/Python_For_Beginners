@@ -41,5 +41,4 @@ while True:
     else:
         print(msg_3) # go back to loop start
         
-print("Out of loop")
 
