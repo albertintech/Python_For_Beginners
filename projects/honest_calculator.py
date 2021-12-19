@@ -1,5 +1,3 @@
-# My Solution
-
 msg_0 = "Enter an equation"
 msg_1 = "Do you even know what numbers are? Stay focused!"
 msg_2 = "Yes ... an interesting math operation. You've slept through all classes, haven't you?"
@@ -27,8 +25,7 @@ def check(v1, v2, v3):
         msg = msg + msg_6
     if (v1 == 1 or v2 == 1) and v3 == "*":
         msg = msg + msg_7
-    if (v1 == 0 or v2 == 0) \
-            and (v3 == "*" or v3 == "+" or v3 == "-"):
+    if (v1 == 0 or v2 == 0) and (v3 == "*" or v3 == "+" or v3 == "-"):
         msg = msg + msg_8
     if msg != "":
         msg = msg_9 + msg
@@ -50,36 +47,43 @@ while True:
     except ValueError:
         print(msg_1)
         continue
-
-    check(x, y, oper)
-
-    if oper in operators:
-        if oper == '+':
-            result = float(x) + float(y)
-        elif oper == '-':
-            result = float(x) - float(y)
-        elif oper == '*':
-            result = float(x) * float(y)
-        elif oper == '/':
-            if y != 0:
+    else:
+        if oper in operators:
+            check(x, y, oper)
+            if oper == '+':
+                result = float(x) + float(y)
+            elif oper == '-':
+                result = float(x) - float(y)
+            elif oper == '*':
+                result = float(x) * float(y)
+            elif oper == '/' and y != 0:
                 result = float(x) / float(y)
             else:
                 print(msg_3)
                 continue
-        print(result)
+            print(result)
 
-        print(msg_4)
-        store_result = input()
-        if store_result == 'y':
-            memory = result
-
-        print(msg_5)
-        continue_calc = input()
-        if continue_calc == 'y':
+            while True:
+                print(msg_4)
+                ans = input()
+                if ans == 'y':
+                    memory = result
+                    break
+                elif ans == 'n':
+                    break
+            
+            while True:
+                print(msg_5)
+                cont_calc = input()
+                if cont_calc in ['n', 'y']:
+                    break
+            
+            if cont_calc == 'n':
+                break
+            else:
+                continue
+        else:
+            print(msg_2)
             continue
-        elif continue_calc == 'n':
-            break
-    else:
-        print(msg_2)
  
 
