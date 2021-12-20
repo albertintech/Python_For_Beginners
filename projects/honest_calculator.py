@@ -38,15 +38,15 @@ while True:
     print(msg[0])
     calc = input().split()
     x, oper, y = calc[0], calc[1], calc[2]
+
+    if x == "M":
+        x = memory
+    if y == "M":
+        y = memory
+
     try:
-        if x != 'M':
-            x = float(x)
-        else:
-            x = memory
-        if y != 'M':
-            y = float(y)
-        else:
-            y = memory
+        x = float(x)
+        y = float(y)
     except ValueError:
         print(msg[1])  # "Do you even know what numbers are? Stay focused!"
         continue
@@ -66,22 +66,39 @@ while True:
                 continue
             print(result)
 
-            while True:
+            stop = True
+            while stop:
                 print(msg[4])  # "Do you want to store the result? (y / n):"
                 ans = input()
-                if ans == 'y': # Add additional flowchart logic here
+                if ans == 'y' and is_one_digit(result) != True:
                     memory = result
                     break
-                elif ans == 'n':
+                elif ans == 'y' and is_one_digit(result) == True:
+                    msg_index = 10
+                    stop = True
+                    while stop:
+                        print(msg[msg_index])
+                        ans = input()
+                        if ans == 'y' and msg_index < 12:
+                            msg_index += 1
+                            continue
+                        elif ans == 'n':
+                            stop = False
+                        else:
+                            memory = result
+                            stop = False
+                            continue
+                else:
                     break
-            
+
+            # Re-enter program here from new flowchart
             while True:
                 print(msg[5])  # "Do you want to continue calculations? (y / n):"
-                cont_calc = input()
-                if cont_calc in ['n', 'y']:
+                ans = input()
+                if ans in ['n', 'y']:
                     break
             
-            if cont_calc == 'n':
+            if ans == 'n':
                 break
             else:
                 continue
