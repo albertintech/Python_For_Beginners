@@ -1,3 +1,11 @@
+# add an element with append()
+# add several elements with extend()
+# remove elements with remove()
+# insert an element at a specified position with insert()
+# check if an element is in a list or not with the in and not in operators
+# count how many times an element occurs in a list with count()
+# get the position of an element in a list with index().
+
 dragons = []  # we do not have dragons yet
 
 dragons.append('Rudror')
